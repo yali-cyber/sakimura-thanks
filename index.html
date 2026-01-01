@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登録完了 | サキムラ</title>
+    <meta name="description" content="DRM構築レポートをメールにお送りしました。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-danger: #E60012;
+            --color-danger-dark: #B80010;
+            --color-black: #1A1A1A;
+            --color-dark-gray: #2D2D2D;
+            --color-gray: #666666;
+            --color-light-gray: #E8E8E8;
+            --color-white: #FFFFFF;
+            --color-bg-light: #F8F8F8;
+            --color-accent: #FFB800;
+            --color-success: #00C851;
+            --color-border: #DDDDDD;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--color-white);
+            color: var(--color-black);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Main Section */
+        .main-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 0;
+            background: linear-gradient(180deg, #FFFFFF 0%, #F8F8F8 100%);
+        }
+
+        /* Success Badge */
+        .success-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--color-success);
+            color: var(--color-white);
+            padding: 15px 35px;
+            font-weight: 900;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 30px rgba(0, 200, 81, 0.3);
+            animation: fadeInDown 0.6s ease-out;
+        }
+
+        .success-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Headline */
+        .headline {
+            font-family: 'Archivo Black', 'Noto Sans JP', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            line-height: 1.3;
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .headline-accent {
+            color: var(--color-danger);
+        }
+
+        .subheadline {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            line-height: 1.8;
+            margin-bottom: 50px;
+            color: var(--color-dark-gray);
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        /* Email Check Box */
+        .email-check-box {
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 40px;
+            background: var(--color-white);
+            border: 3px solid var(--color-border);
+            border-left: 8px solid var(--color-danger);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+        }
+
+        .email-check-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--color-danger);
+            font-weight: 900;
+        }
+
+        .email-check-box p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .email-check-box strong {
+            color: var(--color-danger);
+        }
+
+        .check-list {
+            margin: 25px 0;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .check-list li {
+            padding: 12px 0 12px 35px;
+            position: relative;
+            font-size: 1.05rem;
+        }
+
+        .check-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--color-success);
+            font-weight: 900;
+            font-size: 1.3rem;
+        }
+
+        /* LINE Offer Section */
+        .line-offer-section {
+            padding: 80px 0;
+            background: var(--color-bg-light);
+            border-top: 5px solid var(--color-danger);
+        }
+
+        .offer-badge {
+            display: inline-block;
+            background: var(--color-accent);
+            color: var(--color-black);
+            padding: 10px 25px;
+            font-weight: 900;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .offer-title {
+            font-family: 'Archivo Black', 'Noto Sans JP', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            line-height: 1.3;
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .offer-description {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            line-height: 1.8;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--color-dark-gray);
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        /* Benefits Grid */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .benefit-card {
+            background: var(--color-white);
+            padding: 35px;
+            border: 2px solid var(--color-border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--color-accent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-accent);
+        }
+
+        .benefit-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .benefit-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--color-danger);
+            font-weight: 900;
+        }
+
+        .benefit-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--color-dark-gray);
+        }
+
+        /* LINE CTA Button */
+        .line-cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: #06C755;
+            color: var(--color-white);
+            padding: 25px 50px;
+            font-size: 1.4rem;
+            font-weight: 900;
+            text-decoration: none;
+            border: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(6, 199, 85, 0.3);
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+            cursor: pointer;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        .line-cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .line-cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(6, 199, 85, 0.4);
+            background: #05B04A;
+        }
+
+        .line-cta-button:hover::before {
+            left: 100%;
+        }
+
+        .line-icon {
+            font-size: 1.8rem;
+        }
+
+        .cta-note {
+            font-size: 0.95rem;
+            margin-top: 20px;
+            color: var(--color-gray);
+            animation: fadeInUp 0.8s ease-out 0.8s backwards;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-section {
+                padding: 40px 0;
+            }
+
+            .success-badge {
+                font-size: 0.95rem;
+                padding: 12px 25px;
+            }
+
+            .email-check-box {
+                padding: 30px 20px;
+            }
+
+            .line-offer-section {
+                padding: 60px 0;
+            }
+
+            .benefit-card {
+                padding: 25px;
+            }
+
+            .line-cta-button {
+                padding: 20px 35px;
+                font-size: 1.2rem;
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            background: var(--color-bg-light);
+            border-top: 1px solid var(--color-border);
+            font-size: 0.9rem;
+            color: var(--color-gray);
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Section -->
+    <section class="main-section">
+        <div class="container">
+            <div class="success-badge">
+                <span class="success-icon">✓</span>
+                登録完了
+            </div>
+            
+            <h1 class="headline">
+                登録ありがとうございます。<br>
+                レポートは<span class="headline-accent">メールに送りました。</span>
+            </h1>
+            
+            <p class="subheadline">
+                あなたのメールボックスに、<br>
+                『DRM構築の裏側・完全解剖レポート』が届いています。
+            </p>
+
+            <div class="email-check-box">
+                <h3>📧 メールをご確認ください</h3>
+                <p>
+                    登録いただいたメールアドレス宛に、<br>
+                    <strong>PDFレポートのダウンロードリンク</strong>を送信しました。
+                </p>
+                <ul class="check-list">
+                    <li>迷惑メールフォルダもご確認ください</li>
+                    <li>メールが届かない場合は、アドレスの入力ミスの可能性があります</li>
+                    <li>数分経っても届かない場合は、再度登録をお試しください</li>
+                </ul>
+                <p style="margin-top: 25px; font-size: 0.95rem; color: var(--color-gray);">
+                    ※ 通常1〜2分以内に届きます
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- LINE Offer Section -->
+    <section class="line-offer-section">
+        <div class="container" style="text-align: center;">
+            <div class="offer-badge">🎁 SPECIAL BONUS</div>
+            
+            <h2 class="offer-title">
+                メールが届くまでの間に...<br>
+                サキムラの<span style="color: #06C755;">公式LINE</span>にも<br>
+                登録しませんか?
+            </h2>
+            
+            <p class="offer-description">
+                LINE限定の<strong>音声講義</strong>もプレゼントします。<br>
+                毒舌マーケティングの「リアルな思考プロセス」を<br>
+                あなたの耳に直接叩き込む。
+            </p>
+
+            <div class="benefits-grid">
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">🎙️</div>
+                    <h4>音声講義</h4>
+                    <p>文字では伝わらない「熱量」と「ニュアンス」をダイレクトに</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">⚡</div>
+                    <h4>即実践ノウハウ</h4>
+                    <p>今日から使える具体的な戦術とテクニックを配信</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">🔥</div>
+                    <h4>限定オファー</h4>
+                    <p>LINE登録者だけの特別案内と先行情報</p>
+                </div>
+            </div>
+
+            <a href="https://lin.ee/XXXXXXXXX" class="line-cta-button" target="_blank" rel="noopener">
+                <span class="line-icon">📱</span>
+                公式LINEに登録して音声講義を受け取る
+            </a>
+            <p class="cta-note">※ ワンタップで登録完了。いつでも解除可能です</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 SAKIMURA. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // LINE Button Click Tracking (optional)
+        document.querySelector('.line-cta-button')?.addEventListener('click', function() {
+            console.log('LINE CTA Clicked');
+            // Add your analytics tracking here
+        });
+    </script>
+</body>
+</html>
